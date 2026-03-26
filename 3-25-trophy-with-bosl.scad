@@ -9,45 +9,38 @@ module flare() {
 }
 
 module stem() {
-	rotate_extrude()
+	attachable() {
+		rotate_extrude()
+			difference() {
+				square([20, 40], anchor);
+				right(20) back(2) circle(r=1);
+				right(20) back(20) circle(r=16);
+				right(20) back(38) circle(r=1);
+			}
+		children();
+	}
+}
+
+module cup() {
+	zscale(7/4)
 		difference() {
-			square([20, 40]);
-			right(20) back(2) circle(r=1);
-			right(20) back(20) circle(r=16);
-			right(20) back(38) circle(r=1);
+			sphere(r=40);
+			sphere(r=37);
+			cuboid([82, 82, 41], anchor=BOTTOM);
 		}
 }
 
-module base() {
+module trophy() {
 	cuboid([64, 64, 28], rounding=4) {
 		position(BOTTOM)
 			flare();
 		up(4) attach(FRONT)
 			linear_extrude(1.5) text("1st Place", anchor=CENTER);
 		position(TOP)
-			cyl(h=7, r=24, anchor=BOTTOM)
-				position(TOP)
-					stem();
-	}
-}
-
-module cup() {
-	up(128)
-		resize([80, 80, 70])
-			rotate_extrude()
-				intersection() {
-					difference() {
-						circle(r=40);
-						circle(r=37);
-					}
-					fwd(40) square(40);
-				}
-}
-
-module trophy() {
-	union() {
-		base();
-		cup();
+			cyl(h=7, r=24, anchor=BOTTOM) {
+				position(TOP) stem()
+					position(TOP) up(106) cup();
+			}
 	}
 }
 
