@@ -13,10 +13,10 @@ module base() {
 
 module flare() {
 	linear_extrude(2)
-		translate([-50, -50]) square([100, 100]);
+		translate([-50, -50]) square(100);
 	translate([0, 0, 2])
 		linear_extrude(8, scale=0.8)
-			translate([-50, -50]) square([100, 100]);
+			translate([-50, -50]) square(100);
 }
 
 module stem() {
