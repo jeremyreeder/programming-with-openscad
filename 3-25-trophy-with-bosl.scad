@@ -12,7 +12,7 @@ module stem() {
 	attachable() {
 		rotate_extrude()
 			difference() {
-				square([20, 40], anchor);
+				square([20, 40]);
 				right(20) back(2) circle(r=1);
 				right(20) back(20) circle(r=16);
 				right(20) back(38) circle(r=1);
