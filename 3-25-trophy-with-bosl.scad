@@ -21,13 +21,22 @@ module stem() {
 	}
 }
 
+function semicircle(r) {
+	return [[0, 0], [r, 0], [r, r]];
+}
+
+module hemisphere(r) {
+	rotate_sweep(360, semicircle(r));
+}
+
 module cup() {
-	zscale(7/4)
-		difference() {
-			sphere(r=40);
-			sphere(r=37);
-			cuboid([82, 82, 41], anchor=BOTTOM);
-		}
+	hemisphere(40);
+//	zscale(7/4)
+//		difference() {
+//			sphere(r=40);
+//			sphere(r=37);
+//			cuboid([82, 82, 41], anchor=BOTTOM);
+//		}
 }
 
 module trophy() {
